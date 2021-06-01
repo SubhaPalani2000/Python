@@ -1,0 +1,144 @@
+Modue
+#Built-in Module:
+import random as r
+print(r.choice(['apple', 'mango', 'orange', 'grapes', 'pineapple']))
+print(r.randint(1, 10))
+2.import math module use math sqrt to find square root of 15129 and save.
+import math
+answer=math.sqrt(15129)
+print(answer)
+3.Define a function called contains_keyword that accepts any number of string aruguments.it should return true if any arguments are considered 
+python keywords like("def","return","if"...) otherwise return false.
+import keyword
+def contains_keyword(*str):
+    for i in str:
+        if  keyword.iskeyword(i):
+            return True
+    return False
+#custom Module
+file2.py
+def peel():
+    return "Here's a delicious mango"
+def chocolate():
+    return "Here's a delicious mango, dipped in chocolate"
+def sell():
+    return "There's always money in the mango stand"
+file1.py
+import file2
+print(file2.chocolate())
+print(file2.peel())
+#External Modules
+#pip install termcolour
+import termcolor
+text=termcolor.colored("Hi There!",color="magenta",on_color="on_cyan",attrs=["blink"])
+print(text)
+###Config Parser
+from configparser import ConfigParser
+config=ConfigParser()
+config['DEFAULT']={
+    'test1':'45',
+    'compression':'yes',
+    'compression_level':'9'
+
+}
+config['database']={}
+database=config['database']
+database['host']='127.0.0.1'
+database['user']='username'
+database['pass']='password'
+database['keep_alive']='no'
+config['database']=database
+with open ('config.ini','w') as configfile:
+    config.write(configfile)
+config.ini
+[DEFAULT]
+test1 = 45
+compression = yes
+compression_level = 9
+
+[database]
+host = 127.0.0.1
+user = username
+pass = password
+keep_alive = no
+
+#Request
+Sample Request Program:
+import requests
+url="https://www.w3schools.com/python/module_requests.asp"
+response = requests.get(url)
+print(f"your request to {url} came back w/ status code {response.status_code}")
+print(response.text)
+#Request from json
+import requests
+url="https://icanhazdadjoke.com/"
+response = requests.get(url,headers={"Accept":"application/json"})
+data=response.json()
+print(data["joke"])
+print(f"Status:{data['status']}")
+#Request with params
+import requests
+url="https://icanhazdadjoke.com/search"
+response = requests.get(url,
+                        headers={"Accept":"application/json"},
+                        params={"term":"cat","limits":1}
+)
+data=response.json()
+print(data["results"])
+###csv-Comma-seperated Values files
+Reding csv files-using Reader
+from csv import reader
+with open("Data.csv") as file:
+    csv_reader=reader(file)
+    for row in csv_reader:
+        print(row)
+Data.csv
+Name      Age     Profession
+Subha     20      Engineer
+Jack      23       Doctor
+Reading using DictReader:
+from csv import DictReader
+with open("Data.csv") as file:
+    csv_reader=DictReader(file)
+    for row in csv_reader:
+        print(row['Name'])
+##Writing to csv files:Writer
+from csv import writer
+
+with open("Data1.csv", "w") as file:
+    csv_writer = writer(file)
+    csv_writer.writerow(["Name", "Age", "Hobby"])
+    csv_writer.writerow(["Bheem", 25, "Eating"])
+    csv_writer.writerow(["Raju", 35, "playing"])
+#Data1.csv
+Name,Age,Hobby
+Bheem,25,Eating
+Raju,35,playing
+1.Read the content from one file and write content in  another file:
+from csv import reader,writer
+with open("Data.csv")as file:
+    csv_reader=reader(file)
+    result=[[s.upper() for s in row] for row in csv_reader]
+
+with open("Data2.csv", "w") as file:
+    csv_writer = writer(file)
+    for res in result:
+        csv_writer.writerow(res)
+Data2.csv
+NAME,AGE,PROFESSION
+
+SUBHA,20,ENGINEER
+
+JACK,23,DOCTOR
+
+2.Writing to CSVFiles:DictWriter
+with open("Data3.csv","w") as file:
+    headers=["Name","place","Age"]
+    csv_writer=DictWriter(file,fieldnames=headers)
+    csv_writer.writerow({
+        "Name":"Sindhu",
+        "place":"salem",
+         "Age":23
+    })
+Data3.csv
+Sindhu,salem,23
