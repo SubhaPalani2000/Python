@@ -1,0 +1,43 @@
+1.Find the second largest number from the list of elements.
+#(without using sorted function)
+def secondlargest(list):
+    l1=max(list[0],list[1])
+    l2=min(list[0],list[1])
+    for i in list:
+        if i>l1:
+            l2=l1
+            l1=i
+        elif l2<i and i<l1:
+            l2=i
+    return l2
+print('Second largest number is:',secondlargest([100,200,300,400,500]))
+#using sorted function
+def secondlargest(list):
+    maxvalue=sorted(list)
+    return maxvalue[-2]
+print('Second largest number is:',secondlargest([100,200,300,400,500]))
+2.Find number of occurences of each element in the list and store the output in dictionary
+def occur(list):
+    dict={}
+    for item in list:
+        if item in dict:
+            dict[item]+=1
+        else:
+            dict[item]=1
+    new_dict={k:v for k,v in dict.items()}
+    print(new_dict)
+list=[1,1,2,3,3,4,4,4,5,5,5]
+occur(list)
+3.Find sum of odd numbers and sum of even numbers in the list.
+list=[1,2,3,4,5,6,7,8,9,10]
+even_list=sum([i for i in list if i%2==0])
+odd_list=sum([i for i in list if i%2!=0])
+print("print sum of even number in the list:",even_list)
+print("print sum of odd number in the list:",odd_list)
+4.Remove the duplicate entries of element in the list
+list=[10,20,10,57,57,30,40]
+result=[]
+for i in list:
+    if i not in result:
+        result.append(i)
+print(result)
