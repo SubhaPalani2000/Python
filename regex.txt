@@ -1,0 +1,54 @@
+1.Find a string in the word.
+import re
+if re.search("inform","we need to inform him with the latest information"):
+    print("This is inform")
+import re
+word=re.findall("inform","we need to inform him with the latest information")
+for i in word:
+    print(i)
+2.
+import re
+str="we need to inform him with the latest information"
+for i in re.finditer("inform",str):
+    up=i.span()
+    print(up)
+3.match one of any of several letters.
+import re
+str="Sat, hat, mat, pat"
+allstr=re.findall("[Shmp]at",str)
+for i in allstr:
+    print(i)
+4.Range of characters
+import re
+str="Sat, hat, mat, pat"
+allstr=re.findall("[h-m]at",str)
+for i in allstr:
+    print(i)
+5.Replace the string
+import re
+food="hat rat mat pat"
+regex=re.compile("[r]at")
+food=regex.sub("food",food)
+print(food)
+6.Matches a single character
+import re
+randstr="12345"
+print("Matches:",(len(re.findall("\d{5}",randstr))))
+-------------------------*************************----------------------------------***************************************-------------
+Application of Regular Expressions:
+1.Validating email:
+import re
+email=input()
+regex=re.compile(r'[a-zA-Z0-9-\.]+@[a-zA-Z-\.]*\.(com|edu|net)')
+if(re.search(regex,email)):
+    print("Valid email")
+else:
+    print("Invaild email")
+2.Validating Mobile number:
+import re
+phone=input()
+regex=re.compile(r'/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/')
+if(re.match(regex,phone)):
+    print("Valid phone number")
+else:
+    print("Invaild phone number")
