@@ -1,0 +1,51 @@
+1.)Read the file content and search for the specify String and print the number of occurences of string.
+coloursdData.txt
+Green
+Black
+Green
+Yellow
+Green
+White
+Yellow
+f=open("coloursData",'r')
+count=0
+input_user=input()
+for i in f:
+    if input_user in i:
+        count+=1
+print(input_user+" count:",count)
+2.Read the json file and convert into dictionary and try to get specific value from dictionary using id.
+Data.json
+{
+   "Mark": [
+
+      {
+         "id":"17L345",
+         "name": "subha",
+         "sub": "c programming",
+         "grade": "A"
+      },
+
+      {
+         "id":"17L343",
+         "name": "sindhu",
+         "sub": "java programming",
+         "grade": "A"
+      }
+   ],
+
+   "website":[
+   {
+       "name": "karpagam college of engineering",
+       "URL":"www.karapagam.edu"
+   }
+   ]
+}
+import json
+
+with open("data.json", 'r') as j:
+    x = json.load(j)
+    print(x)
+    value = (x["Mark"])
+    print(value)
+
