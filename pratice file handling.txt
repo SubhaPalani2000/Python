@@ -1,0 +1,157 @@
+#File Handling
+MyData.txt:
+My name is subha.p
+I am from krishnagiri
+I love to do writing poets in tamil,yoga
+I like to watch harry potter movie
+#Read Files
+1.How to read content from txt file.
+f = open('MyData.txt', 'r')#open() use to open the file 
+print(f.read())
+2.How to read the file if the file is located in a different location.
+f = open('C:\\Users\\Subha\\PycharmProjects\\pythonProject\\venv\\selenium\\google.txt', 'r')
+print(f.read())
+3.How to read the first five characters in the file:
+f = open('MyData.txt', 'r')
+print(f.read(5))
+4.How to read the first line in the file.
+f = open('MyData.txt', 'r')
+print(f.readline())
+5.How to read the whole content in the file using loop.
+f = open('MyData.txt', 'r')
+for i in f:
+    print(i,end="")
+6.how to close the file when you are finish with it.
+f = open('MyData.txt', 'r')
+print(f.read())
+f.close()
+#Writing Files/create files
+'a'=Append-will append to the end of the file
+'w'=write-will overwrite any existing content
+1.How to create a new file if it does not exit:
+f = open('coloursData', 'w')
+f.write('pink')
+2.open the file "coloursdata" and append content to the file:
+f = open('coloursData', 'a')
+f.write('yellow')
+f.close()
+f = open("coloursData", "r")
+print(f.read())
+3.open the file "colourdata" and overwrite the content:
+f = open('coloursData', 'w')
+f.write('Green')
+f.close()
+f = open("coloursData", "r")
+print(f.read())
+#Delete Files:
+1.Check the file exits or not,if the file exits remove the particular file:
+import os
+if os.path.exists("MyData.txt"):
+    os.remove("MyData.txt")
+else:
+    print("The file does not exit")
+-----------------------------------************************************--------------------------------------------------*********************
+JSON-Java script Notation
+1.How to convert json file into python.
+import json
+x = '{ "name":"Subha", "age":20, "city":"Krishnagiri"}'
+y = json.loads(x)
+print(y["name"])
+2.How to convert a python file into json.
+
+import json
+x = {
+    "name":"Subha",
+    "age":20,
+    "city":"Krishnagiri"}
+y = json.dumps(x)
+print(y)
+3.How to read json file in python:
+#Data.json:
+{
+   "Mark": [
+
+      {
+         "id":"17L345",
+         "name": "subha",
+         "sub": "c programming",
+         "grade": "A"
+      },
+
+      {
+         "id":"17L343",
+         "name": "sindhu",
+         "sub": "java programming",
+         "grade": "A"
+      }
+   ],
+
+   "website":[
+   {
+       "name": "karpagam college of engineering",
+       "URL":"www.karapagam.edu"
+   }
+   ]
+}
+import json
+
+with open("data.json", 'r') as j:
+    x = json.load(j)
+    print(x["Mark"])
+import json
+
+with open("data.json", 'r') as j:
+    x = json.load(j)
+    list = (x["Mark"])
+    print(list)
+
+for i in range(len(list)):
+    print("Maks of ..",i)
+    print(list[i].get("id"))
+    print(list[i].get("name"))
+    print(list[i].get("sub"))
+    print(list[i].get("grade"))
+----------------------------*******************************--------------------------------------------*******************--
+#Yaml File-is a human-readable data serialization language.
+Demo.yaml
+sports:
+
+  - soccer
+  - football
+  - basketball
+  - cricket
+  - hockey
+  - table tennis
+
+countries:
+
+  - Pakistan
+  - USA
+  - India
+  - China
+  - Germany
+  - France
+  - Spain
+1.Display content in yaml file:
+import yaml
+
+with open("demo.yaml", 'r') as s:
+    y = yaml.load(s,Loader=yaml.FullLoader)
+    for item,doc in y.items():
+        print(item,":",doc)
+
+-----------------------********************************----------------------------**********************************------------------------
+#CURD OPERATION
+import sqlite3
+
+db = sqlite3.connect('employee.db')
+con = db.cursor()
+con.execute
+("""CREATE TABLE employee(first  text,
+    last text,
+    pay integer);""")
+con.execute("INSERT INTO employee VALUES('SUBHA','PALANI',15000);")
+con.excute("select * from employee where last='PALANI'")
+print(con.fetchone())
+db.commit()
+db.close()
